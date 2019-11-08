@@ -1,0 +1,339 @@
+\documentclass[10pt]{beamer}
+
+\input{general/packages.tex}
+\input{general/configs.tex}
+\input{general/info.tex}
+
+\subtitle{Aula 3}
+\date{07 de novembro de 2019}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{O que é o Rails?}
+  \vfill
+  \LARGE
+  \textit{Framework} grátis e \textit{open-source} para desenvolvimento \textit{web} escrito em \textbf{Ruby}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{E o que é um \textit{framework}??}
+  \vfill
+  \LARGE
+  Conjunto de bibliotecas ou componentes que são usados para \textbf{criar uma base} onde sua aplicação será construída
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{E o que é um \textit{framework}??}
+  \vfill
+  \LARGE
+  \textit{Frameworks} ajudam no desenvolvimento \textbf{rápido e seguro} de aplicações, mas é recomendável estudar antes a tecnologia em que a mesma é desenvolvida
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Vantagens do Rails}
+  \vfill
+  \LARGE
+  \begin{itemize}
+    \item \textit{Full-stack}
+    \item Integrado
+    \item Ótimo \textit{back end} para páginas dinâmicas (ex.: página única)
+    \item Estável (existe desde 2004)
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{frame footer}{https://rubyroidlabs.com/blog/2019/10/9-industries-where-flagship-companies-choose-ruby-on-rails/}
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \includegraphics[width=\textwidth]{images/rails_companies.jpg}
+\end{frame}
+\setbeamertemplate{frame footer}{}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{O que você vai usar em um projeto Rails:}
+  \vfill
+  \large
+  \begin{itemize}
+    \item Ruby
+    \item Bash (linha de comando do Linux)
+    \item HTML
+    \item CSS
+    \item JavaScript
+    \item SQL
+    \item Git
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Objetivo}
+  \vfill
+  \Large
+  Construir uma aplicação em Rails com algumas características como cadastro, login e posts de usuários. Realizar o controle de versão com o Git e o \textit{deployment} na internet.
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Ambiente de desenvolvimento}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Plataforma na nuvem (\textbf{Amazon AWS Cloud9} -- grátis, requer cadastro com cartão de crédito, requer internet)
+    \item Instalação no computador (mais complicado, mais aprendizado, pode desenvolver sem internet)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Componentes essenciais}
+  \vfill
+  \LARGE
+  \begin{itemize}
+    \item Terminal de linha de comando
+    \item Explorador de arquivos
+    \item Editor de texto (\textit{"Find in files"})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \includegraphics[width=\textwidth]{images/text_editors.png}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Windows 10 / Ubuntu}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Instalar \textbf{editor de texto}
+    \item Instalar \textbf{\textit{Bash on Ubuntu on Windows}}
+    \item Instalar \textbf{dependências do Ruby} (incl. \textbf{git})
+    \item Instalar \textbf{Ruby} (via \textbf{rbenv} ou \textbf{rvm})
+    \item Instalar \textbf{bundler}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Geral}
+  \vfill
+  \begin{itemize}
+    \item Instalar \textbf{Rails}
+    \item Instalar \textbf{yarn}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Primeira aplicação: \alert{Olá, mundo!}}
+  \vfill
+  Boa prática: \textbf{pasta de projetos}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Resumo de Bash}
+  \vfill
+  \begin{center}
+    \normalsize
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      \textbf{Descrição} & \textbf{Comando} \\
+      \midrule
+      Listar arquivos & \texttt{ls} \\
+      Criar diretório & \texttt{mkdir <diretorio>} \\
+      Mudar de diretório & \texttt{cd <diretorio>} \\
+      Voltar um diretório & \texttt{cd ..} \\
+      Mover um arquivo & \texttt{mv <orig> <dest>} \\
+      Copiar um arquivo & \texttt{cp <orig> <dest>} \\
+      Remover um arquivo & \texttt{rm <arquivo>} \\
+      Remover um diretório vazio & \texttt{rmdir <diretorio>} \\
+      Remover um diretório não vazio & \texttt{rm -rf <diretorio>} \\
+      Exibir o conteúdo de um arquivo & \texttt{cat <arquivo>} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Criando um novo projeto Rails}
+  \vfill
+  \Large
+  \begin{verbatim}
+rails _6.0.0_ new nome_do_projeto
+  \end{verbatim}
+  \vfill
+  \begin{itemize}
+    \item Estrutura de pastas
+    \item \textbf{Bundler}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{frame footer}{https://rubygems.org/}
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \includegraphics[width=\textwidth]{images/rubygems.png}
+\end{frame}
+\setbeamertemplate{frame footer}{}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Rodando a aplicação}
+  \vfill
+  \Large
+  \begin{verbatim}
+rails server
+  \end{verbatim}
+  \vfill
+  \begin{itemize}
+    \item Endereço -- \texttt{http://localhost:3000}
+    \item [\alert{\faExclamation}] Possível configuração necessária
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Exercícios}
+  \vfill
+  \large
+  \begin{enumerate}
+    \item Qual a versão do \textbf{Ruby}, de acordo com a página inicial da aplicação? Confirme com \texttt{ruby -v}
+    \item Qual a versão do \textbf{Rails}?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Arquitetura MVC}
+  \vfill
+  \begin{itemize}
+    \item \textbf{M}odelo
+    \item \textbf{V}isão
+    \item \textbf{C}ontrole
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Finalmente... \alert{Olá, mundo!}}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Exercícios}
+  \vfill
+  \Large
+  \begin{enumerate}
+    \item Exiba a mensagem \textbf{"Olá, pessoal!"} ao invés de "Olá, mundo!" na tela inicial
+    \item Crie uma segunda ação \textbf{\texttt{tchau}} que exiba o texto \textbf{"Tchau, mundo!"} e modifique o arquivo \textbf{\texttt{routes.rb}} de forma que esse texto seja exibido na página inicial
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \includegraphics[width=\textwidth]{images/git.png}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Configurações inciais}
+  \vfill
+  \large
+  \begin{verbatim}
+git config --global user.name <nome>
+
+git config --global user.email <e-mail>
+
+git config --global
+  credential.helper "cache --timeout=86400"
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Criando um repositório local}
+  \vfill
+  \begin{verbatim}
+git init
+  \end{verbatim}
+  \vfill
+  \large
+  O Rails é tão legal que ele já faz isso pra você \faSmileO
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Adicionando arquivos para serem salvos}
+  \vfill
+  \LARGE
+  \begin{lstlisting}
+git add <arquivo>
+
+git add -A %*\textnormal{(adiciona TUDO)}*)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Checando as mudanças a serem salvas}
+  \vfill
+  \LARGE
+  \begin{lstlisting}
+git status
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Salvando as mudanças}
+  \vfill
+  \LARGE
+  \begin{lstlisting}
+git commit -m "<mensagem>"
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Histórico de mudanças}
+  \vfill
+  \LARGE
+  \begin{lstlisting}
+git log
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \includegraphics[width=\textwidth]{images/github.jpg}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Usando git para implementar novas funções}
+  \vfill
+  \large
+  \begin{lstlisting}
+git checkout -b nova-funcao
+git branch
+
+%*\textnormal{(Desenvolve o código e realiza os commits)}*)
+
+git checkout master
+git merge nova-funcao
+git branch -d nova-funcao
+
+git push %*\textnormal{(Envia para o GitHub)}*)
+  \end{lstlisting}
+\end{frame}
+
+\end{document}
