@@ -32,7 +32,7 @@
 | ~~04~~ | ~~17/10/2019~~ |                                                                                   |
 | 05     | 24/10/2019     | Apresentação da disciplina / Conceitos de Ruby (parte 1, até Projeto: Histograma) |
 | 06     | 31/10/2019     | Conceitos de Ruby (parte 2, até o final)                                          |
-| 07     | 07/11/2019     |                                                                                   |
+| 07     | 07/11/2019     | Introdução ao Rails e Desenvolvimento Web (ambiente de desenvolvimento, git)      |
 | 08     | 14/11/2019     |                                                                                   |
 | 09     | 21/11/2019     | Possível AB1                                                                      |
 | 10     | 28/11/2019     |                                                                                   |
