@@ -172,6 +172,9 @@ rbenv rehash
 Para garantir a uniformidade das versões das gems, abra o arquivo Gemfile que está dentro da pasta do seu app Rails no editor de texto e substitua pelo arquivo [desse link](https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile). Após esse passo, volte no terminal e execute os comandos abaixo
 
 ```shell
+cd /mnt/c/projetos/primeiro_app # No Windows 10
+cd ~/projetos/primeiro_app # No Ubuntu
+
 bundle update
 bundle install
 rbenv rehash
