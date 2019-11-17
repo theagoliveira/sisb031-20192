@@ -4,6 +4,7 @@
 - [Instalando o terminal do Ubuntu no Windows 10 (Fonte: It's FOSS)](#instalando-o-terminal-do-ubuntu-no-windows-10-fonte-its-foss)
 - [Instalando o Ruby no Ubuntu com o rbenv (Fonte: GoRails)](#instalando-o-ruby-no-ubuntu-com-o-rbenv-fonte-gorails)
 - [Instalando o Rails](#instalando-o-rails)
+- [Instalando a interface de linha de comando do Heroku](#instalando-a-interface-de-linha-de-comando-do-heroku)
 - [Criando a pasta de projetos](#criando-a-pasta-de-projetos)
   - [Ubuntu no Windows 10](#ubuntu-no-windows-10)
   - [Ubuntu](#ubuntu)
@@ -130,6 +131,16 @@ alias node=nodejs
 
 ![Instalando o Rails](instalar_rails.gif)
 
+## Instalando a interface de linha de comando do Heroku
+
+Execute o comando abaixo
+
+```shell
+curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+```
+
+![Instalando Heroku](instalar_heroku.gif)
+
 ## Criando a pasta de projetos
 
 ### Ubuntu no Windows 10
@@ -158,7 +169,7 @@ cd projetos
 
 ## Criando um novo projeto no Rails
 
-Dentro da pasta de projetos, execute o comando a seguir
+**Dentro da pasta de projetos**, execute o comando a seguir
 
 ```shell
 rails _6.0.0_ new primeiro_app
@@ -169,12 +180,18 @@ rbenv rehash
 
 ## Atualizando o Gemfile
 
-Para garantir a uniformidade das versões das gems, abra o arquivo Gemfile que está dentro da pasta do seu app Rails no editor de texto e substitua pelo arquivo [desse link](https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile). Após esse passo, volte no terminal e execute os comandos abaixo
+Para garantir a uniformidade das versões das gems, substitua o arquivo Gemfile que está **dentro da pasta do seu app Rails** pelo arquivo [desse link](https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile): 1) manualmente com o editor de texto (figura) **ou** 2) com o comando abaixo
 
 ```shell
-cd /mnt/c/projetos/primeiro_app # No Windows 10
-cd ~/projetos/primeiro_app # No Ubuntu
+cd /mnt/c/projetos/primeiro_app # Acessando a pasta do projeto no Windows 10
+cd ~/projetos/primeiro_app # Acessando a pasta do projeto no Ubuntu
 
+wget -O "Gemfile" "https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile"
+```
+
+Após esse passo, volte no terminal e execute os comandos abaixo para atualizar os pacotes do projeto
+
+```shell
 bundle update
 bundle install
 rbenv rehash
