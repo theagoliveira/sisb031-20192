@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -i
+#!/bin/bash -i
 
 ## Instalando o Ruby no Ubuntu com o rbenv (Fonte: GoRails -- https://gorails.com/setup/windows/10)
 
@@ -10,7 +10,7 @@ sudo apt-get update
 ### Instale as dependências do Ruby com o comando abaixo (pode demorar vários minutos)
 
 echo "Instalando dependências do Ruby"
-sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+sudo apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 
 ### Instale o rbenv com os comandos abaixo (atenção: execute um comando de cada vez, apertando Enter)
 
@@ -49,7 +49,7 @@ rbenv rehash
 
 echo "Instalando NodeJS"
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get -y install nodejs
 
 ### Desabilite o download da documentação de gems com o comando abaixo
 
@@ -71,7 +71,8 @@ rails -v
 echo "Instalando Yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
+sudo apt-get update
+sudo apt-get -y install yarn
 alias node=nodejs
 
 ## Instalando a interface de linha de comando do Heroku
