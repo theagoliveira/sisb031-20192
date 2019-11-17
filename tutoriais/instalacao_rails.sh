@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -i
 
 ## Instalando o Ruby no Ubuntu com o rbenv (Fonte: GoRails -- https://gorails.com/setup/windows/10)
 
