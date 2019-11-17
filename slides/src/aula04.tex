@@ -1,0 +1,162 @@
+\documentclass[10pt]{beamer}
+
+\input{general/packages.tex}
+\input{general/configs.tex}
+\input{general/info.tex}
+
+\subtitle{Aula 4}
+\date{14 de novembro de 2019}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \HUGE
+  \centering
+  \textbf{Deployment}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \centering
+  \includegraphics[width=\textwidth]{images/lion_king.jpg}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \Large
+  \begin{itemize}
+    \item Criar um servidor (\textit{hosting})
+    \item Instalar o Ruby
+    \item Configurar um servidor \textit{web} (\textit{HTTP requests})
+    \item Criar um banco de dados
+    \item Fazer o \textit{upload} do código
+  \end{itemize}
+  \vfill
+  \large
+  Melhor fazer o \textit{deployment} cedo e com frequência, para evitar problemas de integração com o servidor
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \centering
+  \includegraphics[width=\textwidth]{images/hosting_services.png}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \centering
+  \includegraphics[width=\textwidth]{images/rails_heroku.png}
+
+  \raggedright
+  O \textit{deployment} é \textbf{muito simples} se o seu código estiver em um repositório do \textbf{git}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \Large
+  \begin{itemize}
+    \item Configurar o banco de dados
+    \item Instalar a interface de linha de comando do Heroku
+    \item Fazer login pela interface
+    \item Criar o app
+    \item Enviar o código
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Banco de dados}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.29\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/postgresql.png}
+    \end{column}
+    \begin{column}{0.69\textwidth}
+      \large
+      \begin{itemize}
+        \item Adicionar \textbf{gem} do PostgreSQL ao projeto (\textbf{Gemfile})
+        \item Atualizar a instalação com o \textbf{\texttt{bundler}}
+        \item Salvar a modifcação no \textbf{git}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Interface de linha de comando}
+  \vfill
+  \large
+  \begin{itemize}
+    \item \texttt{\footnotesize curl https://cli-assets.heroku.com/install-ubuntu.sh | sh}
+    \item \texttt{heroku -v}
+    \item \texttt{heroku login -{}-interactive}
+    \item \texttt{heroku create}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{O comando \texttt{create} retorna duas URLs}
+
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Uma contém o \textbf{site}, para ser acessado pelos usuários, no formato https://nome\_aleatorio.herokuapp.com/
+    \item A outra contém o \textbf{repositório git} que será usado pelo Heroku para o \textit{deployment}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Passos para fazer o \textbf{deployment} no Heroku}
+  \vfill
+  \begin{enumerate}
+    \item \texttt{git push heroku master}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Para ver o site você pode acessar o endereço ou executar o comando \texttt{heroku open}}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{Exercícios}
+  \vfill
+  \large
+  \begin{enumerate}
+    \item Faça o \textit{deployment} de um site que exibe "Olá, pessoal!" ao invés de "Olá, mundo!"
+    \item Faça o \textit{deployment} de um site que executa a ação \texttt{tchau} no controlador
+    \item Execute o comando \texttt{heroku help} para ver uma lista de comandos do \texttt{heroku}. Qual deles exibe os logs da execução de um aplicativo?
+    \item Utilize o comando da questão anterior para descobrir o último evento na atividade do seu aplicativo
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introdução ao Rails e Desenvolvimento Web}
+  \huge
+  \textbf{O que aprendemos até agora}
+  \vfill
+  \large
+  \begin{itemize}
+    \item \textbf{O que é} Rails
+    \item \textbf{Instalar} o Rails
+    \item Criar um \textbf{novo app} e \textbf{executá-lo}
+    \item Criar \textbf{ações} no controlador
+    \item Adicionar \textbf{rotas} para as ações
+    \item Salvar o projeto no \textbf{git}
+    \item Fazer o \textit{deployment} do projeto no \textbf{Heroku}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{O poder do Rails}
+  \HUGE
+  \textbf{Segundo app usando \textit{scaffold generators}}
+\end{frame}
+
+\begin{frame}{O poder do Rails}
+  \LARGE
+  \textbf{App: users e microposts ($\approx$ Twitter)}
+\end{frame}
+
+\end{document}
