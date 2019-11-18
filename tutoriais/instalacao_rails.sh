@@ -20,12 +20,12 @@ cd || exit
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 echo "INSTALANDO RUBY-BUILD"
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 ### Instale o Ruby com os comandos abaixo (pode demorar vários minutos)
 
