@@ -10,7 +10,8 @@ sudo apt-get update
 ### Instale as dependências do Ruby com o comando abaixo (pode demorar vários minutos)
 
 echo "INSTALANDO DEPENDÊNCIAS DO RUBY"
-DEBCONF_NONINTERACTIVE_SEEN=true UCF_FORCE_CONFOLD=1 DEBIAN_FRONTEND=noninteractive sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+echo 'libssl1.1 libraries/restart-without-asking boolean true' | sudo debconf-set-selections
+sudo apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 
 ### Instale o rbenv com os comandos abaixo (atenção: execute um comando de cada vez, apertando Enter)
 
