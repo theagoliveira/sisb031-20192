@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/bin/bash
 
 ## Instalando o Ruby no Ubuntu com o rbenv (Fonte: GoRails -- https://gorails.com/setup/windows/10)
 
