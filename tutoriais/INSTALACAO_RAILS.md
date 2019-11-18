@@ -1,15 +1,17 @@
-# Como instalar o Rails no Windows / Ubuntu
+# Como instalar o Rails no Windows 10 / Ubuntu
 
 - [Instalando o editor de texto](#instalando-o-editor-de-texto)
 - [Instalando o terminal do Ubuntu no Windows 10 (Fonte: It's FOSS)](#instalando-o-terminal-do-ubuntu-no-windows-10-fonte-its-foss)
-- [Instalando o Ruby no Ubuntu com o rbenv (Fonte: GoRails)](#instalando-o-ruby-no-ubuntu-com-o-rbenv-fonte-gorails)
-- [Instalando o Rails](#instalando-o-rails)
-- [Instalando a interface de linha de comando do Heroku](#instalando-a-interface-de-linha-de-comando-do-heroku)
+- [Instalando todos os programas necessários](#instalando-todos-os-programas-necess%c3%a1rios)
 - [Criando a pasta de projetos](#criando-a-pasta-de-projetos)
   - [Ubuntu no Windows 10](#ubuntu-no-windows-10)
   - [Ubuntu](#ubuntu)
 - [Criando um novo projeto no Rails](#criando-um-novo-projeto-no-rails)
+  - [Ubuntu no Windows 10](#ubuntu-no-windows-10-1)
+  - [Ubuntu](#ubuntu-1)
 - [Atualizando o Gemfile](#atualizando-o-gemfile)
+  - [Ubuntu no Windows 10](#ubuntu-no-windows-10-2)
+  - [Ubuntu](#ubuntu-2)
 
 ## Instalando o editor de texto
 
@@ -18,6 +20,8 @@ Recomendado: **Visual Studio Code**
 [Link para o site oficial](https://code.visualstudio.com/)
 
 ## Instalando o terminal do Ubuntu no Windows 10 ([Fonte: It's FOSS](https://itsfoss.com/install-bash-on-windows/))
+
+Se você está rodando o Ubuntu instalado no seu computador ou em uma máquina virtual, **pule para a [próxima etapa](#instalando-todos-os-programas-necess%c3%a1rios)**.
 
 1. Execute o **Windows PowerShell** como administrador.
 
@@ -43,6 +47,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 ![Abrindo o Ubuntu](abrir_ubuntu.gif)
 
+<!--
 ## Instalando o Ruby no Ubuntu com o rbenv ([Fonte: GoRails](https://gorails.com/setup/windows/10))
 
 1. **Atualize o sistema** com o comando abaixo (pode demorar alguns minutos)
@@ -140,52 +145,86 @@ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 ```
 
 ![Instalando Heroku](instalar_heroku.gif)
+-->
+
+## Instalando todos os programas necessários
+
+É possível instalar todos os programas necessários utilizando o comando abaixo
+
+```shell
+curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/instalacao_rails.sh | bash -i
+```
+
+O comando faz o download e executa um script que instala todas as ferramentas necessárias para criar um projeto Rails:
+
+- Dependências do Ruby
+- rbenv
+- Ruby
+- Bundler
+- NodeJS
+- Rails
+- Yarn
+- Heroku
+
+**:warning: :warning: :warning: IMPORTANTE: deve-se observar a instalação dos programas até o final, pois será necessário colocar a senha de usuário algumas vezes durante o procedimento**
 
 ## Criando a pasta de projetos
 
 ### Ubuntu no Windows 10
 
-Usuários no Windows 10 devem criar sua pasta no disco do Windows, fora do sistema de arquivos do Ubuntu, para que o editor de texto possa acessá-los. Utilize os comandos abaixo para criar sua pasta de projetos
+Usuários no Windows 10 devem criar sua pasta no disco do Windows, fora do sistema de arquivos do Ubuntu, para que o editor de texto possa acessá-los. Utilize o comando abaixo para criar sua pasta de projetos
 
 ```shell
-sudo umount /mnt/c
-sudo mount -t drvfs C: /mnt/c -o metadata
-cd /mnt/c
-mkdir projetos
-cd projetos
+curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_windows.sh | bash -i
 ```
 
 ### Ubuntu
 
-Utilize os comandos abaixo para criar sua pasta de projetos e acessá-la
+Utilize o comando abaixo para criar sua pasta de projetos e acessá-la
 
 ```shell
-cd
-mkdir projetos
-cd projetos
+curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_ubuntu.sh | bash -i
 ```
 
+<!--
 ![Criando pasta de projetos](criar_pasta_projetos.gif)
+-->
 
 ## Criando um novo projeto no Rails
 
-**Dentro da pasta de projetos**, execute o comando a seguir
+Execute os comandos a seguir
+
+### Ubuntu no Windows 10
 
 ```shell
+cd /mnt/c/projetos
 rails _6.0.0_ new primeiro_app
-rbenv rehash
+```
+
+### Ubuntu
+
+```shell
+cd ~/projetos
+rails _6.0.0_ new primeiro_app
 ```
 
 ![Criando app Rails](criar_app.gif)
 
 ## Atualizando o Gemfile
 
-Para garantir a uniformidade das versões das gems, substitua o arquivo Gemfile que está **dentro da pasta do seu app Rails** pelo arquivo [desse link](https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile): 1) manualmente com o editor de texto (figura) **ou** 2) com o comando abaixo
+Para garantir a uniformidade das versões das gems, é necessário substituir o Gemfile padrão do app Rails com os comandos abaixo
+
+### Ubuntu no Windows 10
 
 ```shell
-cd /mnt/c/projetos/primeiro_app # Acessando a pasta do projeto no Windows 10
-cd ~/projetos/primeiro_app # Acessando a pasta do projeto no Ubuntu
+cd /mnt/c/projetos/primeiro_app
+wget -O "Gemfile" "https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile"
+```
 
+### Ubuntu
+
+```shell
+cd ~/projetos/primeiro_app
 wget -O "Gemfile" "https://raw.githubusercontent.com/mhartl/rails_tutorial_6th_edition_gemfiles/master/hello_app/Gemfile"
 ```
 
@@ -194,9 +233,10 @@ Após esse passo, volte no terminal e execute os comandos abaixo para atualizar 
 ```shell
 bundle update
 bundle install
-rbenv rehash
 ```
 
+<!--
 ![Atualizando Gemfile](atualizar_gemfile.gif)
+-->
 
 ![Executando bundler](executar_bundler.gif)
