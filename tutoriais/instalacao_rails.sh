@@ -17,15 +17,18 @@ sudo apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libr
 
 echo "INSTALANDO RBENV"
 cd || exit
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+git clone https://github.com/rbenv/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .bashrc
+echo 'eval "$(rbenv init -)"' >> .bashrc
+source .bashrc
+
+echo "CHECANDO A VERSÃO DO RBENV"
+rbenv -v
 
 echo "INSTALANDO RUBY-BUILD"
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git .rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> .bashrc
+source .bashrc
 
 ### Instale o Ruby com os comandos abaixo (pode demorar vários minutos)
 
