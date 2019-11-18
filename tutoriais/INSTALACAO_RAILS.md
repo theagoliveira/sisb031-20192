@@ -175,7 +175,7 @@ O comando faz o download e executa um script que instala todas as ferramentas ne
 Usuários no Windows 10 devem criar sua pasta no disco do Windows, fora do sistema de arquivos do Ubuntu, para que o editor de texto possa acessá-los. Utilize o comando abaixo para criar sua pasta de projetos
 
 ```shell
-curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_windows.sh | bash -i
+eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_windows.sh)"
 ```
 
 ### Ubuntu
@@ -183,7 +183,7 @@ curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutori
 Utilize o comando abaixo para criar sua pasta de projetos e acessá-la
 
 ```shell
-curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_ubuntu.sh | bash -i
+eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_ubuntu.sh)"
 ```
 
 <!--
