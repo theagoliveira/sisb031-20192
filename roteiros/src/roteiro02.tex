@@ -1,0 +1,175 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{packages.tex}
+\input{configs.tex}
+
+\title{Desenvolvimento de Software para a Web II -- Roteiro 2}
+\author{Prof. Thiago Cavalcante}
+\date{}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+
+\begin{enumerate}
+  \item Crie um app Rails chamado \textbf{segundo\_app}
+  \item Substitua o \textbf{Gemfile} padrão pelo Gemfile do \\
+        \textbf{primeiro\_app} e atualize os pacotes com o \\
+        \textbf{Bundler}\footnote{Lembrar de usar a opção \textbf{--without production}}
+  \item Adicione os arquivos no \textbf{git} e faça o \\
+        \textbf{primeiro commit}
+  \item Crie um repositório no \textbf{GitHub} e envie o \\
+        código
+  \item De forma semelhante ao \textbf{primeiro\_app}, crie \\
+        uma ação \textbf{ola}, modifique a rota da página \\
+        inicial, faça um \textbf{commit}, crie o app no \\
+        \textbf{Heroku} e envie o código para o \textbf{GitHub} \\
+        e para o \textbf{Heroku} (\textit{deployment})
+  \item Gere o recurso de \textbf{usuários} com o comando \\
+        \textbf{scaffold}
+
+    \begin{lstlisting}[language=Bash, basicstyle=\fontsize{9.8}{12}\selectfont\ttfamily]
+rails generate scaffold User name:string email:string
+    \end{lstlisting}
+
+  \item Faça a migração do banco de dados
+
+    \begin{lstlisting}[language=Bash]
+rails db:migrate
+    \end{lstlisting}
+
+  \item Rode o seu app com \textbf{rails server} para \\
+        explorar as páginas de usuários
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Crie um novo usuário e inspecione o \\
+            \textbf{código-fonte} da página para descobrir \\
+            o \textbf{id} CSS da mensagem de confirmação; o \\
+            que acontece quando a página é \\
+            atualizada?
+      \item O que acontece ao tentar criar um \\
+            usuário sem e-mail?
+      \item O que acontece ao tentar criar um \\
+            usuário com um e-mail inválido?
+      \item Destrua os usuários anteriores; o \\
+            app mostra alguma mensagem quando \\
+            o usuário é destruído?
+    \end{enumerate}
+
+  \item Modifique o arquivo de rotas para que a \\
+        página inicial do app leve à página inicial \\
+        dos usuários
+
+    \begin{lstlisting}[language=Ruby, title=config/routes.rb]
+Rails.application.routes.draw do
+  resources :users
+  root 'users#index'
+end
+    \end{lstlisting}
+
+  \item Faça um diagrama da arquitetura MVC e \\
+        explique os passos que são realizados ao \\
+        acessar a página \textbf{/users/1/edit}
+  \item Encontre no código a linha que obtém do \\
+        banco de dados as informações do usuário do \\
+        exercício anterior (dica: \textbf{set\_user})
+  \item Qual é o nome do arquivo de visualização \\
+        para a página de edição do usuário?
+
+  \item Gere o recurso de \textbf{microposts} com o comando \\
+        \textbf{scaffold} e faça a migração do banco
+
+    \begin{lstlisting}[language=Bash, basicstyle=\fontsize{8.5}{12}\selectfont\ttfamily]
+rails generate scaffold Micropost content:text user_id:integer
+rails db:migrate
+    \end{lstlisting}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Repita o exercício \textbf{9.(a)} para os \\
+            microposts
+      \item Tente criar um micropost sem \\
+            conteúdo e sem id de usuário
+      \item Tente criar um micropost com \\
+            mais de 140 caracteres
+      \item Destrua os microposts anteriores
+    \end{enumerate}
+
+  \item Crie uma \textbf{validação} para o tamanho do \\
+        conteúdo no \textbf{modelo} dos microposts
+
+    \begin{lstlisting}[language=Ruby, title=app/models/micropost.rb]
+class Micropost < ApplicationRecord
+  validates :content, length: { maximum: 140 }
+end
+    \end{lstlisting}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Repita o exercício \textbf{15.(c)}; existe alguma \\
+            mudança no resultado?
+      \item Inspecione o \textbf{código-fonte} da página para \\
+            descobrir o \textbf{id} CSS da mensagem de erro \\
+            produzida na questão anterior
+    \end{enumerate}
+
+  \item Crie uma \textbf{associação} entre usuários e \\
+        microposts
+
+    \begin{lstlisting}[language=Ruby, title=app/models/user.rb]
+class User < ApplicationRecord
+  has_many :microposts
+end
+    \end{lstlisting}
+
+    \begin{lstlisting}[language=Ruby, title=app/models/micropost.rb]
+class Micropost < ApplicationRecord
+  belongs_to :user
+  validates :content, length: { maximum: 140 }
+end
+    \end{lstlisting}
+
+  \item Abra o \textbf{console} do rails para verificar o \\
+        resultado da associação usando \textbf{rails console}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Edite a página que mostra (\textbf{show}) o \\
+            usuário para mostrar também o conteúdo \\
+            do seu \textbf{primeiro micropost}
+      \item Crie uma validação para a \textbf{presença} do \\
+            conteúdo no modelo de micropost \\
+            (\textbf{presence: true})
+      \item Baseado no exercício anterior, crie \\
+            validações para a presença do nome \\
+            e e-mail no modelo de usuário
+    \end{enumerate}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Encontre a linha, no controlador da \\
+            aplicação, que mostra que a classe \\
+            \textbf{ApplicationController} herda da classe \\
+            \textbf{Action-Controller::Base}
+      \item Existe um arquivo mostrando que a classe \\
+            \textbf{ApplicationRecord} herda da classe \\
+            \textbf{ActiveRecord::Base}?
+    \end{enumerate}
+
+  \item Faça um commit com as alterações e envie \\
+        para o GitHub e Heroku (deu tudo certo?)
+
+  \item Use \textbf{heroku logs} para checar o erro no \\
+        \textit{deployment}
+
+  \item Faça a migração do banco de dados no \\
+        \textbf{Heroku} com \textbf{heroku run rails db:migrate}
+\end{enumerate}
+\end{document}

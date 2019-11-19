@@ -1,0 +1,175 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{packages.tex}
+\input{configs.tex}
+
+\title{Desenvolvimento de Software para a Web II -- Roteiro 1}
+\author{Prof. Thiago Cavalcante}
+\date{}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+
+\begin{enumerate}
+  \item Instale o editor de texto\footnote{Olhar o \textbf{tutorial}}
+  \item Instale os programas necessários\footnotemark[1]
+  \item Crie a pasta de projetos\footnotemark[1]
+  \item Crie um app Rails chamado \textbf{primeiro\_app} \\
+        usando o comando \textbf{rails <versão> new <nome\_app>}\footnotemark[1]
+  \item Atualize o arquivo \textbf{Gemfile} e reinstalar os \\
+        pacotes com o \textbf{Bundler}\footnotemark[1]
+  \item Veja o app funcionando com o comando \\
+        \textbf{rails server}%
+        \footnote[7]{Esperar aparecer a mensagem sobre \textbf{Ctrl-C}}
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Verifique a \textbf{versão do Ruby} na página \\
+            inicial do seu app e confirme rodando o \\
+            comando \textbf{ruby -v} no terminal
+      \item Verifique a \textbf{versão do Rails} na página \\
+            inicial do seu app; verifique que é a \\
+            mesma versão que consta no \textbf{Gemfile}
+    \end{enumerate}
+
+  \item Crie uma ação \textbf{ola} no controlador da \\
+        aplicação
+
+    \begin{lstlisting}[language=Ruby, title=app/controllers/application\_controller.rb]
+class ApplicationController < ActionController::Base
+  def ola
+    render html: "olá, mundo!"
+  end
+end
+    \end{lstlisting}
+
+  \pagebreak
+
+  \item Adicione uma rota para direcionar a ação \\
+        anterior para a página inicial do app
+
+    \begin{lstlisting}[language=Ruby, title=config/routes.rb]
+Rails.application.routes.draw do
+  root 'application#ola'
+end
+    \end{lstlisting}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item Modifique a ação \textbf{ola} para exibir a \\
+            mensagem \textbf{"olá, pessoal!"}
+      \item Crie uma segunda ação chamada \textbf{tchau} \\
+            que exiba o texto \textbf{"tchau, mundo!"} e \\
+            modifique a rota da página inicial \\
+            para esta nova ação
+    \end{enumerate}
+
+  \item Faça a configuração inicial do \textbf{git}
+
+    \begin{lstlisting}[language=Bash, basicstyle=\fontsize{8.6}{12}\selectfont\ttfamily]
+git config --global user.name "Seu Nome"
+git config --global user.email seu.email@email.com
+git config --global credential.helper "cache --timeout=86400"
+    \end{lstlisting}
+
+  \item Adicione todos os arquivos ao repositório e \\
+        faça o primeiro \textbf{commit}
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+git status # checando arquivos antes de adicionar
+git add -A
+git status # checando arquivos depois de adicionar
+git commit -m "Inicializar repositório"
+git log # checando histórico de commits
+    \end{lstlisting}
+
+  \item Crie um repositório no \textbf{GitHub}, associe-o \\
+        ao seu repositório local e envie o código
+
+    \begin{lstlisting}[language=Bash]
+git remote add origin <link https>
+git push -u origin master
+    \end{lstlisting}
+
+  \item Crie um novo \textbf{branch} no repositório para \\
+        alterar o \textbf{README} com a descrição do projeto
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+git checkout -b modificar-README
+git branch # checando o branch atual
+git status # checando as modificações atuais
+git commit -a -m "Melhorar o README"
+    \end{lstlisting}
+
+  \item Insira as modificações do \textbf{branch} criado no \\
+        \textbf{branch} principal do projeto (\textbf{master})
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+git checkout master
+git merge modificar-README
+git branch -d modificar-README # deletando o branch
+git push # enviando o código para o GitHub
+    \end{lstlisting}
+
+  \item Adicione a \textbf{gem} do \textbf{PostgreSQL} no \textbf{Gemfile}, no \\
+        ambiente de produção, para assegurar \\
+        compatibilidade com o \textbf{Heroku}
+
+    \begin{lstlisting}[language=Ruby, title=Gemfile]
+group :production do
+  gem 'pg', '0.20.0'
+end
+    \end{lstlisting}
+
+  \item Modifique o \textbf{Gemfile} de forma que a \textbf{gem} do \\
+        \textbf{SQLite} seja usada apenas nos ambientes de \\
+        desenvolvimento e teste
+
+    \begin{lstlisting}[language=Ruby, title=Gemfile]
+group :development, :test do
+  gem 'sqlite3', '1.4.1'
+  ...
+end
+    \end{lstlisting}
+
+  \item Atualize os pacotes com o \textbf{Bundler} e salve as \\
+        alterações no \textbf{git}
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+bundle update
+bundle install --without production
+git commit -a -m "Atualizar Gemfile para o Heroku"
+    \end{lstlisting}
+
+  \item Faça login no \textbf{Heroku} e crie o app
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+heroku login --interactive
+heroku create # dentro da pasta do projeto
+    \end{lstlisting}
+
+  \item Envie o código para o \textbf{Heroku}
+
+    \begin{lstlisting}[language=Bash, commentstyle=\color{gray}]
+git push heroku master
+    \end{lstlisting}
+
+  \item \textbf{Exercícios}
+
+    \begin{enumerate}
+      \item repita os mesmos exercícios do tópico \\
+            \textbf{10}, dessa vez fazendo o \textbf{deployment} \\
+            para o \textbf{Heroku}
+      \item Rode \textbf{heroku help} para ver a lista de \\
+            comandos do \textbf{Heroku} e descubra qual \\
+            deles exibe os registros da atividade \\
+            do seu app (\textbf{logs})
+      \item Use o comando anterior para ver o \\
+            \textbf{evento mais recente}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
