@@ -33,9 +33,9 @@
 | 05     | 24/10/2019     | Apresentação da disciplina / Conceitos de Ruby (parte 1, até Projeto: Histograma) |
 | 06     | 31/10/2019     | Conceitos de Ruby (parte 2, até o final)                                          |
 | 07     | 07/11/2019     | Introdução ao Rails e Desenvolvimento Web (ambiente de desenvolvimento, git)      |
-| 08     | 14/11/2019     | Deployment, segundo app com scaffolding                                           |
-| 09     | 21/11/2019     | Possível AB1                                                                      |
-| 10     | 28/11/2019     |                                                                                   |
+| 08     | 14/11/2019     | Deployment, segundo app com scaffolding (início)                                  |
+| 09     | 21/11/2019     | Repetição da última aula, erros de instalação, dificuldades técnicas              |
+| 10     | 28/11/2019     | AB1                                                                               |
 | 11     | 05/12/2019     |                                                                                   |
 | 12     | 12/12/2019     |                                                                                   |
 | 13     | 19/12/2019     |                                                                                   |
