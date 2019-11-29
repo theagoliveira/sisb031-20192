@@ -35,8 +35,8 @@
 | 07     | 07/11/2019     | Introdução ao Rails e Desenvolvimento Web (ambiente de desenvolvimento, git)      |
 | 08     | 14/11/2019     | Deployment, segundo app com scaffolding (início)                                  |
 | 09     | 21/11/2019     | Repetição da última aula, erros de instalação, dificuldades técnicas              |
-| 10     | 28/11/2019     | AB1                                                                               |
-| 11     | 05/12/2019     |                                                                                   |
+| 10     | 28/11/2019     | Resolução de problemas do Rails, roteiro 1 (parte 1)                              |
+| 11     | 05/12/2019     | AB1                                                                               |
 | 12     | 12/12/2019     |                                                                                   |
 | 13     | 19/12/2019     |                                                                                   |
 |        | 26/12/2019     | Recesso                                                                           |
