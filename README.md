@@ -52,7 +52,7 @@
 
 ## Recursos
 
-- [Link para visualizar o Jupyter Notebook de Ruby do curso](https://nbviewer.jupyter.org/github/theagoliveira/sisb031_20192/blob/master/sisb031.ipynb)
+- [Link para visualizar o Jupyter Notebook de Ruby do curso](https://nbviewer.jupyter.org/github/theagoliveira/sisb031_20192/blob/master/notebooks/ruby.ipynb)
 - [Codecademy: Learn Ruby](https://www.codecademy.com/learn/learn-ruby)
 - [Repl.it: Ruby](https://repl.it/languages/ruby)
 - [Rails Beginner Cheat Sheet](http://www.pragtob.info/rails-beginner-cheatsheet/)

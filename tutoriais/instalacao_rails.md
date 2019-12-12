@@ -25,27 +25,27 @@ Se você está rodando o Ubuntu instalado no seu computador ou em uma máquina v
 
 1. Execute o **Windows PowerShell** como administrador.
 
-![Abrindo o Windows PowerShell](abrir_powershell.gif)
+![Abrindo o Windows PowerShell](img/abrir_powershell.gif)
 
 2. Habilite o **Windows Subsystem for Linux (WSL)** digitando o comando abaixo no terminal e apertando <kbd>Enter</kbd>.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 ```
-![Habilitando WSL](habilitar_wsl.gif)
+![Habilitando WSL](img/habilitar_wsl.gif)
 
 3. Aperte <kbd>Y</kbd> e <kbd>Enter</kbd> para reiniciar o computador e continuar o procedimento (é *necessário* reiniciar).
 4. Abra a **loja da Microsoft**.
 
-![Abrindo a loja da Microsoft](abrir_microsoft_store.gif)
+![Abrindo a loja da Microsoft](img/abrir_microsoft_store.gif)
 
 5. Procure por **linux**, abra o primeiro resultado e instale o app **Ubuntu**.
 
-![Instalando o Ubuntu](instalar_ubuntu.gif)
+![Instalando o Ubuntu](img/instalar_ubuntu.gif)
 
 6. **Abra** o Ubuntu, **aguarde** a instalação e **configure** seu usuário e senha.
 
-![Abrindo o Ubuntu](abrir_ubuntu.gif)
+![Abrindo o Ubuntu](img/abrir_ubuntu.gif)
 
 <!--
 ## Instalando o Ruby no Ubuntu com o rbenv ([Fonte: GoRails](https://gorails.com/setup/windows/10))
@@ -62,7 +62,7 @@ sudo apt-get update
 sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 ```
 
-![Instalando as dependências](instalar_dependencias.gif)
+![Instalando as dependências](img/instalar_dependencias.gif)
 
 3. Instale o **rbenv** com os comandos abaixo (atenção: execute **um comando de cada vez**, apertando <kbd>Enter</kbd>)
 
@@ -98,7 +98,7 @@ gem install bundler
 rbenv rehash
 ```
 
-![Instalando o Ruby](instalar_ruby.gif)
+![Instalando o Ruby](img/instalar_ruby.gif)
 
 ## Instalando o Rails
 
@@ -134,7 +134,7 @@ sudo apt update && sudo apt install yarn
 alias node=nodejs
 ```
 
-![Instalando o Rails](instalar_rails.gif)
+![Instalando o Rails](img/instalar_rails.gif)
 
 ## Instalando a interface de linha de comando do Heroku
 
@@ -144,7 +144,7 @@ Execute o comando abaixo
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 ```
 
-![Instalando Heroku](instalar_heroku.gif)
+![Instalando Heroku](img/instalar_heroku.gif)
 -->
 
 ## Instalando todos os programas necessários
@@ -152,7 +152,7 @@ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 É possível instalar todos os programas necessários utilizando o comando abaixo
 
 ```shell
-curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/instalacao_rails.sh | bash -i
+curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/scripts/instalacao_rails.sh | bash -i
 ```
 
 O comando faz o download e executa um script que instala todas as ferramentas necessárias para criar um projeto Rails:
@@ -175,7 +175,7 @@ O comando faz o download e executa um script que instala todas as ferramentas ne
 Usuários no Windows 10 devem criar sua pasta no disco do Windows, fora do sistema de arquivos do Ubuntu, para que o editor de texto possa acessá-los. Utilize o comando abaixo para criar sua pasta de projetos
 
 ```shell
-eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_windows.sh)"
+eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/scripts/criar_pasta_windows.sh)"
 ```
 
 ### Ubuntu
@@ -183,11 +183,11 @@ eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/maste
 Utilize o comando abaixo para criar sua pasta de projetos e acessá-la
 
 ```shell
-eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/criar_pasta_ubuntu.sh)"
+eval "$(curl https://raw.githubusercontent.com/theagoliveira/sisb031_20192/master/tutoriais/scripts/criar_pasta_ubuntu.sh)"
 ```
 
 <!--
-![Criando pasta de projetos](criar_pasta_projetos.gif)
+![Criando pasta de projetos](img/criar_pasta_projetos.gif)
 -->
 
 ## Criando um novo projeto no Rails
@@ -208,7 +208,7 @@ cd ~/projetos
 rails _6.0.0_ new primeiro_app
 ```
 
-![Criando app Rails](criar_app.gif)
+![Criando app Rails](img/criar_app.gif)
 
 ## Atualizando o Gemfile
 
@@ -236,7 +236,7 @@ bundle install
 ```
 
 <!--
-![Atualizando Gemfile](atualizar_gemfile.gif)
+![Atualizando Gemfile](img/atualizar_gemfile.gif)
 -->
 
-![Executando bundler](executar_bundler.gif)
+![Executando bundler](img/executar_bundler.gif)
