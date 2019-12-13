@@ -37,7 +37,7 @@
 | 09     | 21/11/2019     | Repetição da última aula, erros de instalação, dificuldades técnicas              |
 | 10     | 28/11/2019     | Resolução de problemas do Rails, roteiro 1 (parte 1)                              |
 | 11     | 05/12/2019     | Prova 1 (AB1)                                                                     |
-| 12     | 12/12/2019     |                                                                                   |
+| 12     | 12/12/2019     | Finalização do Roteiro 1                                                          |
 | 13     | 19/12/2019     |                                                                                   |
 |        | 26/12/2019     | Recesso                                                                           |
 |        | 02/01/2020     | Recesso                                                                           |
