@@ -12,6 +12,9 @@
 \pagenumbering{gobble}
 \maketitle
 
+\sloppy
+\raggedright
+
 \begin{enumerate}
   \item Instale o editor de texto\footnote{Olhar o \textbf{tutorial}}
   \item Instale os programas necessários\footnotemark[1]
@@ -86,6 +89,10 @@ git commit -m "Inicializar repositório"
 git log # checando histórico de commits
     \end{lstlisting}
 
+  \item Crie um \textbf{token} de acesso pessoal no GitHub, de acordo com o tutorial desse link (pode dar o nome que quiser ao token, por exemplo "token-rails"):
+
+  \textcolor{red}{\textbf{\footnotesize https://help.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line}}
+
   \item Crie um repositório no \textbf{GitHub}, associe-o \\
         ao seu repositório local e envie o código
 
@@ -93,6 +100,8 @@ git log # checando histórico de commits
 git remote add origin <link https>
 git push -u origin master
     \end{lstlisting}
+
+  \textcolor{red}{\textbf{IMPORTANTE: Quando for pedida a senha no terminal, use o token gerado no passo anterior e não a senha que você usa para logar no site do GitHub}}
 
   \item Crie um novo \textbf{branch} no repositório para \\
         alterar o \textbf{README} com a descrição do projeto
