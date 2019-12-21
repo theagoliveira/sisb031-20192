@@ -38,7 +38,7 @@
 | 10     | 28/11/2019     | Resolução de problemas do Rails, roteiro 1 (parte 1)                              |
 | 11     | 05/12/2019     | Prova 1 (AB1)                                                                     |
 | 12     | 12/12/2019     | Finalização do Roteiro 1                                                          |
-| 13     | 19/12/2019     |                                                                                   |
+| 13     | 19/12/2019     | Início do Roteiro 2                                                               |
 |        | 26/12/2019     | Recesso                                                                           |
 |        | 02/01/2020     | Recesso                                                                           |
 |        | 09/01/2020     | Recesso                                                                           |
