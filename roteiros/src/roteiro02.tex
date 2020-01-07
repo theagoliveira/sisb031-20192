@@ -12,56 +12,52 @@
 \pagenumbering{gobble}
 \maketitle
 
+\sloppy
+\raggedright
+
 \begin{enumerate}
-  \item Crie um app Rails chamado \textbf{segundo\_app}
-  \item Substitua o \textbf{Gemfile} padrão pelo Gemfile do \\
-        \textbf{primeiro\_app} e atualize os pacotes com o \\
-        \textbf{Bundler}\footnote{Lembrar de usar a opção \textbf{--without production}}
-  \item Adicione os arquivos no \textbf{git} e faça o \\
-        \textbf{primeiro commit}
-  \item Crie um repositório no \textbf{GitHub} e envie o \\
-        código
-  \item De forma semelhante ao \textbf{primeiro\_app}, crie \\
-        uma ação \textbf{ola}, modifique a rota da página \\
-        inicial, faça um \textbf{commit}, crie o app no \\
-        \textbf{Heroku} e envie o código para o \textbf{GitHub} \\
-        e para o \textbf{Heroku} (\textit{deployment})
-  \item Gere o recurso de \textbf{usuários} com o comando \\
-        \textbf{scaffold}
+  \item Crie um app Rails chamado \textbf{segundo\_app} com o comando \textbf{rails new segundo\_app}
+  \item Substitua o conteúdo do \textbf{Gemfile} do segundo\_app com o conteúdo do Gemfile do \textbf{primeiro\_app} e atualize os pacotes com o \textbf{Bundler} usando \textbf{bundle update} e \textbf{bundle install --without production}
+  \item Adicione os arquivos no \textbf{git} com \textbf{git add -A} e faça o \textbf{primeiro commit} com \textbf{git commit -m "Inicializar o repositório"}
+  \item Crie um novo repositório chamado \textbf{segundo\_app} no \textbf{GitHub} \textcolor{red}{(lembre-se de enviar o repositório para mim ou me adicionar como colaborador)} e envie o código do seu repositório local para ele
+  \item De forma semelhante ao \textbf{primeiro\_app}, crie uma ação \textbf{ola} no controlador da aplicação, modifique a rota da página inicial para essa ação e \textbf{faça um commit} para salvar essas alterações
+  \item Crie o app no \textbf{Heroku} com \textbf{heroku create} \textcolor{red}{(lembre-se de enviar o link do Heroku para mim)} e envie o código para o \textbf{GitHub} e para o \textbf{Heroku} (\textit{deployment}) usando \textbf{git push origin master} e \textbf{git push heroku master}
+  \item Crie o recurso de \textbf{usuários} com o comando \textbf{scaffold}, isso vai gerar o código para implementar usuários com nome e e-mail no seu app
 
     \begin{lstlisting}[language=Bash, basicstyle=\fontsize{9.8}{12}\selectfont\ttfamily]
 rails generate scaffold User name:string email:string
     \end{lstlisting}
 
-  \item Faça a migração do banco de dados
+  \item Faça a migração do banco de dados, ou seja, crie a tabela de usuários no banco, com o comando abaixo
 
     \begin{lstlisting}[language=Bash]
 rails db:migrate
     \end{lstlisting}
 
-  \item Rode o seu app com \textbf{rails server} para \\
-        explorar as páginas de usuários
+  \item Rode o seu app com \textbf{rails server} para explorar as páginas de usuários. Crie, edite e remova usuários. Clique na página de um usuário para ver suas informações. Observe a URL que aparece na barra de endereços quando você faz cada uma dessas atividades. O comando \textbf{scaffold} gera uma série de ações e visualizações associadas, de acordo com a tabela abaixo:
+  \begin{center}
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      \textbf{URL} & \textbf{Ação} & \textbf{Descrição} \\
+      \midrule
+      /users & \textbf{index} & Lista todos os usuários \\
+      /users/1 & \textbf{show} & Mostra o usuário com id 1 \\
+      /users/new & \textbf{new} & Cria um novo usuário \\
+      /users/1/edit & \textbf{edit} & Edita o usuário com id 1 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
 
   \item \textbf{Exercícios}
 
     \begin{enumerate}
-      \item Crie um novo usuário e inspecione o \\
-            \textbf{código-fonte} da página para descobrir \\
-            o \textbf{id} CSS da mensagem de confirmação; o \\
-            que acontece quando a página é \\
-            atualizada?
-      \item O que acontece ao tentar criar um \\
-            usuário sem e-mail?
-      \item O que acontece ao tentar criar um \\
-            usuário com um e-mail inválido?
-      \item Destrua os usuários anteriores; o \\
-            app mostra alguma mensagem quando \\
-            o usuário é destruído?
+      \item Crie um novo usuário e inspecione o \textbf{código-fonte} da página para descobrir o \textbf{id} CSS da mensagem de confirmação. Qual é o id? O que acontece quando a página é atualizada? \textcolor{red}{(responder por escrito)}
+      \item O que acontece ao tentar criar um usuário sem e-mail? \textcolor{red}{(responder por escrito)}
+      \item O que acontece ao tentar criar um usuário com um e-mail inválido? \textcolor{red}{(responder por escrito)}
+      \item Destrua os usuários das questões anteriores. O app mostra alguma mensagem quando o usuário é destruído? \textcolor{red}{(responder por escrito)}
     \end{enumerate}
 
-  \item Modifique o arquivo de rotas para que a \\
-        página inicial do app leve à página inicial \\
-        dos usuários
+  \item Modifique o arquivo de rotas para que a página inicial do app leve à página inicial dos usuários
 
     \begin{lstlisting}[language=Ruby, title=config/routes.rb]
 Rails.application.routes.draw do
@@ -70,17 +66,13 @@ Rails.application.routes.draw do
 end
     \end{lstlisting}
 
-  \item Faça um diagrama da arquitetura MVC e \\
-        explique os passos que são realizados ao \\
-        acessar a página \textbf{/users/1/edit}
-  \item Encontre no código a linha que obtém do \\
-        banco de dados as informações do usuário do \\
-        exercício anterior (dica: \textbf{set\_user})
-  \item Qual é o nome do arquivo de visualização \\
-        para a página de edição do usuário?
+  \item Abra no editor de texto o arquivo do controlador de usuário (\textbf{app/controllers/users\_controller.rb}). Veja as ações (métodos) que estão definidas lá. Quais são? \textcolor{red}{(responder por escrito)}
 
-  \item Gere o recurso de \textbf{microposts} com o comando \\
-        \textbf{scaffold} e faça a migração do banco
+  % \item Faça um diagrama da arquitetura MVC e explique os passos que são realizados ao acessar a página \textbf{/users/1/edit}
+  % \item Encontre no código a linha que obtém do banco de dados as informações do usuário do exercício anterior (dica: \textbf{set\_user})
+  % \item Qual é o nome do arquivo de visualização para a página de edição do usuário?
+
+  \item De forma semelhante aos passos 7 e 8, crie o recurso de \textbf{microposts} com o comando \textbf{scaffold} e faça a migração do banco. Isso vai gerar o código para implementar microposts com conteúdo e id de usuário (autor do micropost)
 
     \begin{lstlisting}[language=Bash, basicstyle=\fontsize{8.5}{12}\selectfont\ttfamily]
 rails generate scaffold Micropost content:text user_id:integer
@@ -90,17 +82,15 @@ rails db:migrate
   \item \textbf{Exercícios}
 
     \begin{enumerate}
-      \item Repita o exercício \textbf{9.(a)} para os \\
-            microposts
-      \item Tente criar um micropost sem \\
-            conteúdo e sem id de usuário
-      \item Tente criar um micropost com \\
-            mais de 140 caracteres
-      \item Destrua os microposts anteriores
+      \item Repita o exercício \textbf{10.(a)} para os microposts \textcolor{red}{(responder por escrito)}
+      \item Tente criar um micropost sem conteúdo e sem id de usuário. O que acontece? \textcolor{red}{(responder por escrito)}
+      \item Tente criar um micropost com mais de 140 caracteres. O que acontece? \textcolor{red}{(responder por escrito)}
+      \item Destrua os microposts das questões anteriores
     \end{enumerate}
 
-  \item Crie uma \textbf{validação} para o tamanho do \\
-        conteúdo no \textbf{modelo} dos microposts
+  \item Abra no editor de texto o arquivo do controlador de microposts (\textbf{app/controllers/microposts\_controller.rb}). Veja as ações (métodos) que estão definidas lá. Quais são? \textcolor{red}{(responder por escrito)}
+
+  \item Crie uma \textbf{validação} para o tamanho do conteúdo no \textbf{modelo} dos microposts (verifique que deu certo tentando criar um micropost com mais de 140 caracteres)
 
     \begin{lstlisting}[language=Ruby, title=app/models/micropost.rb]
 class Micropost < ApplicationRecord
@@ -111,15 +101,11 @@ end
   \item \textbf{Exercícios}
 
     \begin{enumerate}
-      \item Repita o exercício \textbf{15.(c)}; existe alguma \\
-            mudança no resultado?
-      \item Inspecione o \textbf{código-fonte} da página para \\
-            descobrir o \textbf{id} CSS da mensagem de erro \\
-            produzida na questão anterior
+      \item Repita o exercício \textbf{14.(c)}; existe alguma mudança no resultado? \textcolor{red}{(responder por escrito)}
+      \item Inspecione o \textbf{código-fonte} da página para descobrir o \textbf{id} CSS da mensagem de erro produzida na questão anterior. Qual o id? \textcolor{red}{(responder por escrito)}
     \end{enumerate}
 
-  \item Crie uma \textbf{associação} entre usuários e \\
-        microposts
+  \item Crie uma \textbf{associação} entre usuários e microposts usando \textbf{has\_many} e \textbf{belongs\_to}. Dessa forma, o aplicativo vai poder associar os microposts aos usuários que os criaram, usando o campo \textbf{user\_id} presente na tabela de microposts.
 
     \begin{lstlisting}[language=Ruby, title=app/models/user.rb]
 class User < ApplicationRecord
@@ -134,42 +120,32 @@ class Micropost < ApplicationRecord
 end
     \end{lstlisting}
 
-  \item Abra o \textbf{console} do rails para verificar o \\
-        resultado da associação usando \textbf{rails console}
+  \item Para verificar o resultado da associaçao que foi criada, abra o console do rails rodando o comando \textbf{rails console} no seu terminal. Ao abrir o terminal, atribua a uma variável \textbf{primeiro\_usuario} o valor \textbf{User.first} (ou seja, ela recebe o primeiro usuário guardado no banco de dados) e rode o comando \textbf{primeiro\_usuario.microposts}. Com isso, serão exibidos todos os microposts associados ao primeiro usuário. Para verificar o caminho contrário da associação (começando a partir de um micropost), execute os comandos a seguir. \textcolor{red}{(obs.: crie pelo menos um usuário e vários microposts com o id desse usuário, para poder ver os resultados)}
+
+  \begin{lstlisting}[language=Ruby, title=app/models/micropost.rb]
+algum_micropost = primeiro_usuario.microposts.first
+algum_micropost.user
+  \end{lstlisting}
 
   \item \textbf{Exercícios}
 
     \begin{enumerate}
-      \item Edite a página que mostra (\textbf{show}) o \\
-            usuário para mostrar também o conteúdo \\
-            do seu \textbf{primeiro micropost}
-      \item Crie uma validação para a \textbf{presença} do \\
-            conteúdo no modelo de micropost \\
-            (\textbf{presence: true})
-      \item Baseado no exercício anterior, crie \\
-            validações para a presença do nome \\
-            e e-mail no modelo de usuário
+      \item Edite a página que mostra (\textbf{show}) o usuário para mostrar também o conteúdo do seu \textbf{primeiro micropost}
+      \item Baseado no passo \textbf{16} do roteiro, crie uma validação para a \textbf{presença} do \textbf{conteúdo} no \textbf{modelo de micropost} (\textbf{DICA: "presence: true"}) (verifique que deu certo)
+      \item Baseado no exercício anterior, crie também validações para a \textbf{presença} do \textbf{nome} e \textbf{e-mail} no \textbf{modelo de usuário} (verifique que deu certo)
     \end{enumerate}
 
   \item \textbf{Exercícios}
 
     \begin{enumerate}
-      \item Encontre a linha, no controlador da \\
-            aplicação, que mostra que a classe \\
-            \textbf{ApplicationController} herda da classe \\
-            \textbf{Action-Controller::Base}
-      \item Existe um arquivo mostrando que a classe \\
-            \textbf{ApplicationRecord} herda da classe \\
-            \textbf{ActiveRecord::Base}?
+      \item Encontre a linha, no controlador da aplicação, que mostra que a classe \textbf{ApplicationController} herda da classe \textbf{Action-Controller::Base} \textcolor{red}{(responder por escrito)}
+      \item Existe um arquivo mostrando que a classe \textbf{ApplicationRecord} herda da classe \textbf{ActiveRecord::Base}? Qual? (dica: procure na pasta de modelos) \textcolor{red}{(responder por escrito)}
     \end{enumerate}
 
-  \item Faça um commit com as alterações e envie \\
-        para o GitHub e Heroku (deu tudo certo?)
+  \item Faça um commit com as alterações (exemplo de mensagem: "Finalizar segundo\_app") e envie para o GitHub e Heroku usando o comando git push. Quando você entra na página do Heroku do seu app, o site funciona normalmente? \textcolor{red}{(responder por escrito)}
 
-  \item Use \textbf{heroku logs} para checar o erro no \\
-        \textit{deployment}
+  \item Use \textbf{heroku logs} para checar o erro no \textit{deployment} (procure por ActionView::Template::Error). Qual a mensagem de erro completa? \textcolor{red}{(responder por escrito)}
 
-  \item Faça a migração do banco de dados no \\
-        \textbf{Heroku} com \textbf{heroku run rails db:migrate}
+  \item Faça a migração do banco de dados no \textbf{Heroku} com \textbf{heroku run rails db:migrate} e acesse a página do seu app no Heroku novamente e veja que ela está funcionando
 \end{enumerate}
 \end{document}
