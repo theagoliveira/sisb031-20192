@@ -122,7 +122,7 @@ end
 
   \item Para verificar o resultado da associaçao que foi criada, abra o console do rails rodando o comando \textbf{rails console} no seu terminal. Ao abrir o terminal, atribua a uma variável \textbf{primeiro\_usuario} o valor \textbf{User.first} (ou seja, ela recebe o primeiro usuário guardado no banco de dados) e rode o comando \textbf{primeiro\_usuario.microposts}. Com isso, serão exibidos todos os microposts associados ao primeiro usuário. Para verificar o caminho contrário da associação (começando a partir de um micropost), execute os comandos a seguir. \textcolor{red}{(obs.: crie pelo menos um usuário e vários microposts com o id desse usuário, para poder ver os resultados)}
 
-  \begin{lstlisting}[language=Ruby, title=app/models/micropost.rb]
+  \begin{lstlisting}[language=Ruby]
 algum_micropost = primeiro_usuario.microposts.first
 algum_micropost.user
   \end{lstlisting}
