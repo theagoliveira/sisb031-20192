@@ -17,10 +17,10 @@
 \raggedright
 
 \begin{enumerate}
-  \item Os títulos (aqueles que aparecem nas abas do seu navegador) das páginas estáticas criadas no roteiro anterior (inicio, ajuda, sobre) estão todos iguais ao nome do seu app ("TerceiroApp"). Queremos que cada página exiba um título que a diferencie das outras. Em um projeto Rails, uma página que é exibida para o usuário é composta pelo \textbf{arquivo de layout} (que fica na pasta \textbf{app/views/layout}) e pelos \textbf{arquivos de visualização} (que ficam na pasta \textbf{app/views/nome\_do\_controlador}). O arquivo de layout principal da aplicação, que é aplicado em todas as visualizações, fica em \textbf{app/views/layout/application.html.erb}, criado automaticamente pelo comando \textbf{rails new}. Para implementar a modificação dos títulos das figuras e observar o funcionamento das visualizações, vamos ignorar (temporariamente) o arquivo de layout, renomeando-o com o comando a seguir
+  \item Os títulos (aqueles que aparecem nas abas do seu navegador) das páginas estáticas criadas no roteiro anterior (inicio, ajuda, sobre) estão todos iguais ao nome do seu app ("TerceiroApp"). Queremos que cada página exiba um título que a diferencie das outras. Em um projeto Rails, uma página que é exibida para o usuário é composta pelo \textbf{arquivo de layout} (que fica na pasta \textbf{app/views/layouts}) e pelos \textbf{arquivos de visualização} (que ficam na pasta \textbf{app/views/nome\_do\_controlador}). O arquivo de layout principal da aplicação, que é aplicado em todas as visualizações, fica em \textbf{app/views/layouts/application.html.erb}, criado automaticamente pelo comando \textbf{rails new}. Para implementar a modificação dos títulos das figuras e observar o funcionamento das visualizações, vamos ignorar (temporariamente) o arquivo de layout, renomeando-o com o comando a seguir
 
   \begin{lstlisting}[language=Bash, title={terminal, dentro da pasta do terceiro app}]
-mv app/views/layout/application.html.erb arq_layout
+mv app/views/layouts/application.html.erb arq_layout
   \end{lstlisting}
 
   \pagebreak
@@ -135,7 +135,7 @@ assert_select "title" , "Início | #{@titulo_base}"
   Excluindo a primeira linha (com o comando provide) e o conteúdo de cada página, o que resta nas visualizações é essencialmente o conteúdo do arquivo de layout. Podemos agora desfazer o que foi feito no início do roteiro e retornar o arquivo de layout para a sua localização original, de forma que ele seja carregado pelo app.
 
   \begin{lstlisting}[language=Bash, title={terminal, dentro da pasta do terceiro app}]
-mv arq_layout app/views/layout/application.html.erb
+mv arq_layout app/views/layouts/application.html.erb
   \end{lstlisting}
 
   Para que o layout funcione como desejado, você deve substituir a linha do título por aquela que está presente nas visualizações.
