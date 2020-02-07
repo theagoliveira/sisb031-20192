@@ -45,10 +45,9 @@
 |        | 16/01/2020     | Recesso                                                                           |
 | 14     | 23/01/2020     | Início do Roteiro 3                                                               |
 | 15     | 30/01/2020     | Início do Roteiro 4                                                               |
-| 16     | 06/02/2020     |                                                                                   |
-| 17     | 13/02/2020     | Possível AB2                                                                      |
-|        | 20/02/2020     | Reavaliação                                                                       |
-|        | 27/02/2020     | Prova Final                                                                       |
+| 16     | 06/02/2020     | Início do Roteiro 5                                                               |
+| 17     | 13/02/2020     | Reavaliação                                                                       |
+|        | 20/02/2020     | Prova Final                                                                       |
 
 ## Recursos
 
