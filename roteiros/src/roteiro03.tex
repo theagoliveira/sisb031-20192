@@ -3,19 +3,16 @@
 \input{packages.tex}
 \input{configs.tex}
 
-\title{Desenvolvimento de Software para a Web II -- Roteiro 3 \\
-\Large \textit{Tema: Páginas estáticas e testes}}
-\author{Prof. Thiago Cavalcante}
-\date{}
+\title{Roteiro 3}
+\posttitle{\end{center}}
 
 \begin{document}
 
-\pagenumbering{gobble}
 \maketitle
 
-\sloppy
-\raggedright
+\emergencystretch 3em
 
+\setlength{\leftmargini}{0pt}
 \begin{enumerate}
   \item Crie um app Rails chamado \textbf{terceiro\_app} com o comando \textbf{rails new terceiro\_app}
   \item Substitua o conteúdo do \textbf{Gemfile} do terceiro\_app com o conteúdo do Gemfile do link \textbf{\href{https://git.io/JvtEb}{https://git.io/JvtEb}} e atualize os pacotes com o \textbf{Bundler} usando \textbf{bundle install {-}-without production}, \textbf{bundle update} e \textbf{bundle install {-}-without production}
@@ -24,7 +21,7 @@
   \item De forma semelhante ao \textbf{primeiro\_app}, crie uma ação \textbf{ola} no controlador da aplicação, modifique a rota da página inicial para essa ação e \textbf{faça um commit} para salvar essas alterações (\textbf{git commit -m "Adicionar ação olá ao controlador"})
   \item Crie o app no \textbf{Heroku} com \textbf{heroku create} \textcolor{red}{(lembre-se de enviar o link do Heroku para mim)} e envie o código para o \textbf{GitHub} e para o \textbf{Heroku} (\textit{deployment}) usando \textbf{git push origin master} e \textbf{git push heroku master} (verifique que o \textit{deployment} funcionou)
   \item Crie um novo branch para trabalhar com as páginas estáticas do aplicativo usando \textbf{git checkout -b paginas-estaticas}
-  \item Páginas estáticas são aquelas cuja informação é sempre a mesma (ao contrário de páginas dinâmicas). Serão criadas três páginas estáticas: \textbf{inicio}, \textbf{ajuda} e \textbf{sobre}. Para gerar as duas primeiras automaticamente, utilize \textbf{rails generate controller PaginasEstaticas inicio ajuda} (preste atenção ao formato da escrita {-}- classes em ruby tem o nome escrito com o formato \textbf{CamelCase} e o rails converte para \textbf{snake\_case} na hora de criar seus arquivos)
+  \item Páginas estáticas são aquelas cuja informação é sempre a mesma (ao contrário de páginas dinâmicas). Serão criadas três páginas estáticas: \textbf{inicio}, \textbf{ajuda} e \textbf{sobre}. Para gerar as duas primeiras automaticamente, utilize \textbf{rails generate controller PaginasEstaticas inicio ajuda} (preste atenção ao formato da escrita -- classes em ruby tem o nome escrito com o formato \textbf{CamelCase} e o rails converte para \textbf{snake\_case} na hora de criar seus arquivos)
   \item Salve suas alterações no git com um commit (exemplo de mensagem: "Criar controlador para páginas estáticas", \textcolor{red}{não esqueça de adicionar os arquivos antes de fazer o commit}) e envie para o GitHub usando \textbf{git push -u origin paginas-estaticas}
   % \item [OBS.:] Para desfazer um comando \textbf{generate} no rails, use o comando \textbf{destroy} (por exemplo, você poderia desfazer o comando do passo 8 usando \textbf{rails destroy PaginasEstaticas}). Para desfazer a última migração do banco de dados (\textbf{rails db:migrate}), você pode usar o comando \textbf{rails db:rollback}. Caso deseje desfazer \textit{todas as migrações}, é só rodar \textbf{rails db:migrate VERSION=0}. \textcolor{red}{Não desfaça nada do que foi feito até agora, essas informações servem apenas para o caso de acontecer algum problema.}
   \item Se você acessar o arquivo \textbf{routes.rb}, verá que o comando \textbf{generate} do passo 8 criou algumas linhas de código novas lá.
@@ -38,35 +35,40 @@ end
   \end{lstlisting}
 
   O comando \textbf{get `paginas\_estaticas/inicio'}, por exemplo, mapeia uma requisição para a URL "/paginas\_estaticas/inicio"\ à ação \textbf{inicio} no controlador das páginas estáticas. O uso de \textbf{get}, especificamente, faz com que essa rota responda ao \textbf{método GET do protocolo HTTP}. Para verificar o resultado dessas rotas, inicie seu aplicativo com \textbf{rails server} e acesse as URLs \textbf{localhost:3000/paginas\_estaticas/inicio} e \textbf{localhost:3000/paginas\_estaticas/ajuda}
-  \item [OBS.:] O \textbf{protocolo HTTP} é a forma com a qual o seu navegador (\textit{cliente}) troca informações com as páginas na internet (que rodam em um \textit{servidor}). Quando você está programando e testando um aplicativo em Rails, seu computador assume os dois papéis ao mesmo tempo (cliente e servidor). O protocolo HTTP possui quatro operações: \textbf{GET} ("pegar"\ uma página), \textbf{POST} (criar coisas, submeter formulários), \textbf{PATCH} (atualizar coisas) e \textbf{DELETE} (remover coisas). Esses métodos tem uma relação bem próxima com as ações de controlador geradas para os usuários e os microposts no Roteiro 2 (ao contrário das ações de controlador das páginas estáticas).
-  \item Para entender de onde vem as URLs que foram exibidas no passo 10, pode-se verificar o que suas ações de controlador no arquivo \textbf{app/controllers/paginas\_estaticas\_controller.rb} fazem. Quais ações estão lá e qual o conteúdo de cada uma? \textcolor{red}{(responder por escrito)}
+  \item [*] O \textbf{protocolo HTTP} é a forma com a qual o seu navegador (\textit{cliente}) troca informações com as páginas na internet (que rodam em um \textit{servidor}). Quando você está programando e testando um aplicativo em Rails, seu computador assume os dois papéis ao mesmo tempo (cliente e servidor). O protocolo HTTP possui quatro operações: \textbf{GET} ("pegar"\ uma página), \textbf{POST} (criar coisas, submeter formulários), \textbf{PATCH} (atualizar coisas) e \textbf{DELETE} (remover coisas). Esses métodos tem uma relação bem próxima com as ações de controlador geradas para os usuários e os microposts no Roteiro 2 (ao contrário das ações de controlador das páginas estáticas).
+
+  \item Para entender de onde vem as URLs que foram exibidas no passo 10, pode-se verificar o que suas ações de controlador no arquivo \textbf{paginas\_estaticas\_controller.rb} fazem. Quais ações estão lá e qual o conteúdo de cada uma? \textcolor{red}{(responder por escrito)}
   \item Lembrando de como funciona a arquitetura MVC utilizada pelo Rails, além de o controlador executar a ação apropriada, ele também retorna para o usuário uma visualização associada à URL. As visualizações de um aplicativo Rails ficam na pasta \textbf{app/views}. O comando \textbf{generate}, além de criar um controlador com as ações especificadas, também cria uma pasta do controlador na pasta de visualizações do projeto. Cada ação possui uma visualização correspondente. Quais os nomes dos arquivos de visualização gerados? \textcolor{red}{(responder por escrito)}
   \item As visualizações que foram geradas são apenas temporárias. O desenvolvedor deve alterá-las de acordo com as suas necessidades. Modifique os títulos e descrições das páginas de início e ajuda do seu projeto. Você pode seguir os modelos abaixo ou colocar um conteúdo à sua escolha.
 
-  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb]
 <h1>Terceiro App</h1>
 <p>
  Este é o terceiro aplicativo Rails da disciplina
- <strong>Desenvolvimento de Software para a Web II</strong>
- do curso de Sistemas de Informação em
- <a href="http://ufal.edu.br/arapiraca/unidades-de-ensino/penedo">
-  Penedo</a>
+ <strong>
+  Desenvolvimento de Software para a Web II
+ </strong>
+ do curso de Sistemas de Informação da
+ <a href="http://ufal.edu.br/">
+  UFAL</a> em Penedo
 </p>
   \end{lstlisting}
 
-  \pagebreak
-
-  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/ajuda.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/ajuda.html.erb]
 <h1>Ajuda</h1>
 <p>
   Você pode ler mais sobre Rails na página
   <a href="https://guides.rubyonrails.org/">
     Ruby on Rails Guides</a>
-  e sobre Ruby em <a href="https://ruby-doc.org/">Ruby-Doc.org</a>
+  e sobre Ruby em <a href="https://ruby-doc.org/">
+    Ruby-Doc.org
+  </a>
 </p>
   \end{lstlisting}
 
-  \item Para criar a terceira página estática (\textbf{sobre}), você vai utilizar \textbf{testes} para garantir que a sua implementação está correta. Desenvolver aplicativos com o auxílio de testes requer que o programador escreva uma quantidade adicional de código. No entanto, quando bem feitos, os testes podem economizar tempo na hora de encontrar erros no \textit{software}. Você vai começar escrevendo \textbf{testes de controlador} no roteiro atual. O comando \textbf{generate} já gerou automaticamente um arquivo de testes para as páginas estáticas. Ele está localizado em \textbf{test/controllers/paginas\_estaticas\_controller\_test.rb}. Verifique o conteúdo desse arquivo. Quantos testes estão declarados lá? \textcolor{red}{(responder por escrito)}
+  \item Para criar a terceira página estática (\textbf{sobre}), você vai utilizar \textbf{testes} para garantir que a sua implementação está correta. Desenvolver aplicativos com o auxílio de testes requer que o programador escreva uma quantidade adicional de código. No entanto, quando bem feitos, os testes podem economizar tempo na hora de encontrar erros no \textit{software}.
+
+  Você vai começar escrevendo \textbf{testes de controlador} no roteiro atual. O comando \textbf{generate} já gerou automaticamente um arquivo de testes para as páginas estáticas. Ele está localizado na pasta \textbf{test/controllers}, com o nome \textbf{paginas\_estaticas\_controller\_test.rb}. Verifique o conteúdo desse arquivo. Quantos testes estão declarados lá? \textcolor{red}{(responder por escrito)}
 
   \begin{lstlisting}[language=Ruby, title=Formato genérico para declaração de um teste]
 test "nome do teste" do
@@ -81,19 +83,27 @@ end
   \item Os testes declarados no arquivo do passo anterior simplesmente carregam as páginas de início e ajuda (com uma requisição \textbf{HTTP} do tipo \textbf{GET}) e verificam (com o método \textbf{assert\_response}) se a resposta indica que o carregamento ocorreu com sucesso ou não. Para ver o resultado dos testes no seu terminal, rode os comandos \textbf{rails db:migrate} (necessário apenas na primeira vez) e então \textbf{rails test}. Qual a quantidade de: testes realizados? verificações (\textit{assertions}) realizadas? erros obtidos? \textcolor{red}{(responder por escrito)}
   \item Para adicionar a página estática \textbf{sobre}, será adotado o procedimento de escrita do teste primeiro. Observando como estão escritos os testes no arquivo \textbf{paginas\_estaticas\_controller\_test.rb}, defina, nesse mesmo arquivo, um novo teste para página \textbf{sobre} e veja que o teste falha quando você roda o comando \textbf{rails test}. Qual a mensagem de erro? \textcolor{red}{(responder por escrito)} (dica: você pode copiar um dos testes já predefinidos e apenas alterar o nome da página)
   \item A mensagem do teste anterior mostra que a URL da página \textbf{sobre} não existe. Isso é uma indicação de que o roteador da aplicação (\textbf{config/routes.rb}) precisa ser atualizado. Observando as outras linhas de código no arquivo do roteador, adicione uma nova chamada \textbf{get} para a página \textbf{sobre} (essa nova chamada cria automaticamente o método `paginas\_estaticas\_sobre\_url'). Rode novamente os testes com \textbf{rails test}. Existe algum erro? Se sim, qual a mensagem? \textcolor{red}{(responder por escrito)}
-  \item A mensagem do teste anterior mostra que está faltando uma ação \textbf{sobre} no controlador das páginas estáticas. Siga o modelo do arquivo \textbf{app/controllers/paginas\_estaticas\_controller.rb} e defina uma nova ação \textbf{sobre}. Rode novamente os testes com \textbf{rails test}. Existe algum erro? Se sim, qual a mensagem? \textcolor{red}{(responder por escrito)}
+
+  \item A mensagem do teste anterior mostra que está faltando uma ação \textbf{sobre} no controlador das páginas estáticas. Siga o modelo do arquivo \textbf{paginas\_estaticas\_controller.rb} e defina uma nova ação \textbf{sobre}. Rode novamente os testes com \textbf{rails test}. Existe algum erro? Se sim, qual a mensagem? \textcolor{red}{(responder por escrito)}
   \item A mensagem de erro do teste anterior aponta a falta de um \textit{template} para a página \textbf{sobre}. Dentro um aplicativo Rails, um \textit{template} é basicamente uma \textbf{visualização}. Você deve, então, criar um novo arquivo de visualização para a página \textbf{sobre} na pasta \textbf{app/views/paginas\_estaticas}. Isso pode ser feito com o comando \textbf{touch app/views/paginas\_estaticas/sobre.html.erb}. Adicione algum conteúdo à essa visualização. Siga o modelo abaixo ou adicione outra coisa à sua escolha.
 
-  \pagebreak
-
-  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/sobre.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/sobre.html.erb]
 <h1>Sobre</h1>
 <p>
  <ul>
-  <li><strong>Desenvolvimento de Software para Web II</strong></li>
+  <li>
+    <strong>
+      Desenvolvimento de Software para Web II
+    </strong>
+  </li>
   <li><strong>Código: </strong>SISB031</li>
   <li><strong>Semestre: </strong>7</li>
-  <li><strong>Professor: </strong>Thiago Cavalcante</li>
+  <li>
+    <strong>
+      Professor:
+    </strong>
+    Thiago Cavalcante
+  </li>
  </ul>
 </p>
   \end{lstlisting}

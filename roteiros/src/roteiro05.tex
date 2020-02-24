@@ -3,19 +3,16 @@
 \input{packages.tex}
 \input{configs.tex}
 
-\title{Desenvolvimento de Software para a Web II -- Roteiro 5 \\
-\Large \textit{Tema: Preenchendo o layout; Estilo; Visualizações parciais}}
-\author{Prof. Thiago Cavalcante}
-\date{}
+\title{Roteiro 5}
+\posttitle{\end{center}}
 
 \begin{document}
 
-\pagenumbering{gobble}
 \maketitle
 
-\sloppy
-\raggedright
+\emergencystretch 3em
 
+\setlength{\leftmargini}{0pt}
 \begin{enumerate}
   \item Crie um novo branch no seu repositório para as modificações do roteiro com \textbf{git checkout -b preenchendo-layout}
 
@@ -36,7 +33,7 @@ end
 
   \item Queremos melhorar a estrutura do site adicionando alguns elementos, como uma barra de navegação superior e um rodapé com links extras, que permitam ao usuário navegar entre as diferentes páginas criadas, e adicionando também estilos aos elementos da página usando CSS (\textit{cascading style sheets}) e o \textit{framework} \href{https://getbootstrap.com/docs/3.4/}{Bootstrap}. Para que esses novos elementos apareçam em todas as visualizações, devemos modificar o \textbf{layout} do app, no arquivo \textbf{app/views/layouts/application.html.erb}. Substitua o comando \textbf{<\%= yield \%>} no layout pelos comandos no quadro a seguir
 
-  \begin{lstlisting}[language=html, title={app/views/layouts/application.html.erb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title={app/views/layouts/application.html.erb}]
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to 'terceiro app', '#', id: 'logo' %>
@@ -65,7 +62,7 @@ end
   Por fim, abaixo do \textbf{header}, existe uma outra \textbf{div}isão na página, onde é inserido o conteúdo da visualização com o comando \textbf{yield}.
 
   \item Para melhorar a estrutura da página inicio, substitua o seu conteúdo pelo conteúdo do quadro a seguir
-  \begin{lstlisting}[language=html, title={app/views/paginas\_estaticas/inicio.html.erb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title={app/views/paginas\_estaticas/inicio.html.erb}]
 <% provide(:title, "Início") %>
 
 <div class="center jumbotron">
@@ -176,9 +173,7 @@ p {
 
   \item Para finalizar a estrutura do app, falta apenas criar o rodapé com a descrição do criador do site e alguns links adicionais (sobre e contato). Da mesma forma que a tag \textbf{header} cria um elemento na parte superior do site, a tag \textbf{footer} cria um elemento de rodapé no site. Adicione os comandos do quadro a seguir no seu arquivo de layout, \textbf{logo abaixo} do comando \textbf{<\%= yield \%>}.
 
-  \pagebreak
-
-  \begin{lstlisting}[language=html, title={app/views/layouts/application.html.erb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title={app/views/layouts/application.html.erb}]
 <footer class="footer">
   <small>
     Terceiro App criado por Thiago

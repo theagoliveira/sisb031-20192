@@ -3,19 +3,16 @@
 \input{packages.tex}
 \input{configs.tex}
 
-\title{Desenvolvimento de Software para a Web II -- Roteiro 4 \\
-\Large \textit{Tema: Adicionando um título dinâmico nas Páginas Estáticas}}
-\author{Prof. Thiago Cavalcante}
-\date{}
+\title{Roteiro 4}
+\posttitle{\end{center}}
 
 \begin{document}
 
-\pagenumbering{gobble}
 \maketitle
 
-\sloppy
-\raggedright
+\emergencystretch 3em
 
+\setlength{\leftmargini}{0pt}
 \begin{enumerate}
   \item Os títulos (aqueles que aparecem nas abas do seu navegador) das páginas estáticas criadas no roteiro anterior (inicio, ajuda, sobre) estão todos iguais ao nome do seu app ("TerceiroApp"). Queremos que cada página exiba um título que a diferencie das outras. Em um projeto Rails, uma página que é exibida para o usuário é composta pelo \textbf{arquivo de layout} (que fica na pasta \textbf{app/views/layouts}) e pelos \textbf{arquivos de visualização} (que ficam na pasta \textbf{app/views/nome\_do\_controlador}). O arquivo de layout principal da aplicação, que é aplicado em todas as visualizações, fica em \textbf{app/views/layouts/application.html.erb}, criado automaticamente pelo comando \textbf{rails new}. Para implementar a modificação dos títulos das figuras e observar o funcionamento das visualizações, vamos ignorar (temporariamente) o arquivo de layout, renomeando-o com o comando a seguir
 
@@ -23,9 +20,7 @@
 mv app/views/layouts/application.html.erb arq_layout
   \end{lstlisting}
 
-  \pagebreak
-
-  \item [OBS.:] Toda página HTML possui uma estrutura padrão, mostrada no quadro a seguir
+  \item [*] Toda página HTML possui uma estrutura padrão, mostrada no quadro a seguir
 
   \begin{lstlisting}[language=html]
 <!DOCTYPE html>
@@ -43,7 +38,7 @@ mv app/views/layouts/application.html.erb arq_layout
 
   \item Cada página estática do seu app deve ter o título no formato \textbf{"{}(Nome) | Terceiro App Web II"}, onde \textbf{"(Nome)"} é a parte variável do título (que depende da página) e \textbf{"Terceiro App Web II"} é a parte constante do título, que permanece sempre igual. Assim como no último roteiro, começaremos escrevendo o teste para o resultado que queremos obter. Para verificar o conteúdo de uma tag html, podemos usar a verificação \textbf{assert\_select}. Com isso, o teste da página início pode ser atualizado com essa nova verificação.
 
-  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}]
 test "should get inicio" do
   get paginas_estaticas_inicio_url
   assert_response :success
@@ -55,9 +50,7 @@ end
 
   \item Inicialmente, vamos adicionar os títulos das páginas de forma \textbf{estática}. Você deve, no arquivo de visualização de cada página estática, adicionar o restante da estrutura básica de uma página html (como mostrado no quadro da primeira observação do roteiro). A visualização da página \textbf{inicio} fica como no quadro a seguir
 
-  \pagebreak
-
-  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb]
 <!DOCTYPE html>
 <html>
  <head>
@@ -79,7 +72,7 @@ end
 
   \item \textbf{Exercício:} Elimine a repetição da parte constante do título no arquivo de testes do controlador de paginas estáticas adicionando uma definição para o método \textbf{setup} antes das definições dos testes, de acordo com o quadro a seguir
 
-  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}]
 def setup
   @titulo_base = "Terceiro App Web II"
 end
@@ -90,13 +83,13 @@ test "should get inicio" do
 
   Substitua, então, \textbf{todas} as aparições do título base nos testes por \textbf{\#\{@titulo\_base\}}
 
-  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=Ruby, title={test/controllers/paginas\_estaticas\_controller\_test.rb}]
 assert_select "title" , "Início | #{@titulo_base}"
   \end{lstlisting}
 
   \item Nesse momento, você pode comparar os arquivos de visualização das páginas estáticas do seu app e ver que: 1) os títulos (na seção \textbf{head}) de cada uma são bem semelhantes, a não ser pela parte relativa ao nome de cada página; 2) todos contém a estrutura básica de uma página html. Toda essa repetição de informações viola o princípio \textbf{DRY} (\textit{Don't Repeat Yourself}, Não repita a si mesmo). Para eliminar essa repetição, podemos começar usando \textbf{código Ruby embutido} nas visualizações. Você pode introduzir a geração dinâmica de cada título usando o método \textbf{provide} na primeira linha dos arquivos.
 
-  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb]
 <% provide(:title, "Início") %>
 <!DOCTYPE html>
 <html>
@@ -119,7 +112,7 @@ assert_select "title" , "Início | #{@titulo_base}"
 
   \item Com essas modificações, todas as visualizações agora devem estar com a estrutura a seguir
 
-  \begin{lstlisting}[language=html, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html]
 <% provide(:title, "Início"/"Ajuda"/"Sobre") %>
 <!DOCTYPE html>
 <html>
@@ -140,7 +133,7 @@ mv arq_layout app/views/layouts/application.html.erb
 
   Para que o layout funcione como desejado, você deve substituir a linha do título por aquela que está presente nas visualizações.
 
-  \begin{lstlisting}[language=html, title=app/views/layouts/application.html.erb, basicstyle=\scriptsize]
+  \begin{lstlisting}[language=html, title=app/views/layouts/application.html.erb]
 <!DOCTYPE html>
 <html>
   <head>
@@ -157,7 +150,7 @@ mv arq_layout app/views/layouts/application.html.erb
 
   Outra modificação necessária é a remoção da estrutura html dos arquivos de visualização, agora que essa estrutura já está presente no layout. O comando \textbf{<\%= yield \%>} carrega o arquivo de visualização requisitado pelo controlador. O quadro a seguir mostra a visualização da página inicio após a correção.
 
-    \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb, basicstyle=\scriptsize]
+    \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/inicio.html.erb]
 <% provide(:title, "Início") %>
 <h1>Terceiro App</h1>
   <p>Este é o terceiro aplicativo Rails da disciplina
@@ -172,7 +165,7 @@ mv arq_layout app/views/layouts/application.html.erb
 
   \item \textbf{Exercício:} Seguindo os mesmos passos do roteiro anterior para criar a página \textbf{sobre}, crie uma página \textbf{contato} para o seu app. Você pode usar o conteúdo no quadro abaixo para sua visualização.
 
-    \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/contato.html.erb, basicstyle=\scriptsize]
+    \begin{lstlisting}[language=html, title=app/views/paginas\_estaticas/contato.html.erb]
 <% provide(:title, "Contato") %>
 <h1>Contato</h1>
 <p>
