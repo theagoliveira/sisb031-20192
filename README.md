@@ -4,14 +4,9 @@
 | ------- | -------- | ------------- | ------- | ------------------ | --------------------- | ---- |
 | SISB031 | 7º       | 60h           | 03/2018 | 2019.2 (40 alunos) | Quinta, 19:50 - 22:30 | 2    |
 
-- [Lista de discussão](#lista-de-discuss%c3%a3o)
 - [Livros sugeridos](#livros-sugeridos)
 - [Aulas](#aulas)
 - [Recursos](#recursos)
-
-## Lista de discussão
-
-[Google Groups: sisb031_20192](https://groups.google.com/forum/#!forum/sisb031_20192)
 
 ## Livros sugeridos
 

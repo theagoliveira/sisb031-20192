@@ -3,7 +3,11 @@ ementa.md
 lista_alunos.md
 frequencia/*
 avaliacoes/*
-codigos/*
+!avaliacoes/pdf
+!avaliacoes/src
+!avaliacoes/respostas_roteiros
+avaliacoes/respostas_roteiros/*.txt
+avaliacoes/respostas_roteiros/*.pdf
 */pdf_orig/*
 
 # Created by https://www.gitignore.io/api/ruby,rails,jupyternotebooks,latex
