@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{article}
+
+\input{packages.tex}
+\input{configs.tex}
+
+\title{Reavaliação AB1}
+\posttitle{\end{center}}
+
+\begin{document}
+
+\maketitle
+
+\emergencystretch 3em
+
+\input{recommendations.tex}
+
+NOME: \rule{.85\textwidth}{0.1mm}
+
+\begin{multicols*}{2}
+\setlength{\leftmargini}{0pt}
+\begin{enumerate}
+  \item (4,4 pt $\rightarrow$ 11 x 0,4 pt) Sobre o desenvolvimento de aplicativos web com Rails, responda as questões a seguir:
+
+  \begin{enumerate}
+    \item Se você deseja criar um aplicativo Rails chamado \textit{app\_rails}, qual comando deve rodar no terminal? % rails new app_rails
+    \item Qual o nome do arquivo que contém informações sobre os pacotes Ruby que estão incluídos no projeto? % Gemfile
+    \item Qual comando é usado para rodar o aplicativo localmente no seu computador? % rails server
+    \item Suponha que o controlador da aplicação contém uma ação chamada \textit{teste\_html} definida em seu código, a qual exibe um texto na tela. Que linha de código deve ser adicionada ao roteador da aplicação para que a página incial do aplicativo seja direcionada para essa ação? % root 'application#teste_html'
+    \item Durante a configuração inicial do git para controle de versões do projeto, que informações o desenvolvedor deve fornecer? % nome e email
+    \item Escreva os comandos necessários para salvar as modificações do código do projeto no histórico do git. Use a mensagem "Salvar modificações". % git add -A; git commit -m "Salvar modificações"
+    \item Sempre que é feita uma adição ou remoção de pacotes no projeto, é preciso rodar dois comandos no terminal para instalar ou excluir os pacotes. Que comandos são esses? % bundle update e bundle install
+    \item Qual comando deve ser executado no terminal para a criação de um novo aplicativo na plataforma Heroku? % heroku create
+    \item Suponha que a execução do comando da letra anterior resultou na criação de um app chamado \textit{obscure-springs-55859}. Escreva a URL que deve ser usada para acessar o site da aplicação. % https://obscure-springs-55859.herokuapp.com
+    \item Qual comando é utilizado para fazer o \textit{deployment} da aplicação para o Heroku? % git push heroku master
+    \item Qual comando é utilizado para atualizar o repositório remoto do projeto no GitHub? % git push origin master
+  \end{enumerate}
+
+  \item (1,6 pt) A arquitetura de funcionamento do Rails é composta pelos seguintes elementos: navegador de internet (ou \textit{browser}), banco de dados, visualização, controlador, modelo e roteador. Desenhe um diagrama que estabeleça as conexões entre cada elemento. Certifique-se de mostrar as direções de comunicação entre cada parte.
+
+  \bigskip\bigskip
+
+  % SOURCES
+  % - https://github.com/kumar91gopi/Algorithms-and-Data-Structures-in-Ruby
+  \item (2,0 pt) Leia o código Ruby a seguir e responda as perguntas.
+
+  \begin{minted}{ruby}
+def metodo(a,b)
+  resultado = 0
+
+  while b > 0
+    resultado += a if (b % 2 == 1)
+    a *= 2
+    b /= 2
+  end
+
+  return resultado
+end
+  \end{minted}
+
+  \begin{enumerate}
+    \item (0,6 pt) Qual o resultado desse método para: a = 2 e b = 12? a = 5 e b = 8? % 24, 40
+    \item (0,7 pt) Qual é o propósito desse método?
+    \item (0,7 pt) O método continua realizando seu propósito se: a = 0? b = 0? a < 0? b < 0? % Sim, sim, sim, não
+  \end{enumerate}
+
+  % SOURCES
+  % - https://github.com/kumar91gopi/Algorithms-and-Data-Structures-in-Ruby
+  \item (2,0 pt) Leia o código Ruby a seguir e responda as perguntas.
+
+  \begin{minted}{ruby}
+def metodo(lista,num)
+  tam = lista.length
+
+  lista.sort!
+
+  esq = 0
+  dir = tam - 1
+
+  while esq < dir
+    if (lista[esq] + lista[dir] == num)
+      return true
+    elsif (lista[esq] + lista[dir] > num)
+      dir -= 1
+    else
+      esq += 1
+    end
+  end
+
+  return false
+end
+  \end{minted}
+
+  \begin{enumerate}
+    \item (0,6 pt) Qual o resultado desse método para: lista = [11, 5, 6, 3, 1, 8] e num = 10? lista = [1, 5, 7, 3, 2, 8] e num = 7? % false, true
+    \item (0,7 pt) Qual é o propósito desse método? % Encontrar um par de números em uma lista cuja soma seja igual a num
+    \item (0,7 pt) O método continua realizando seu propósito se a linha \texttt{lista.sort!} for removida? Explique o motivo se a resposta for não. % Não. Com a lista nõo ordenada, o incremento/decremento dos índices esq/dir não garante que a próxima soma vai ser a maior/menor soma que segue a soma anterior.
+  \end{enumerate}
+\end{enumerate}
+\end{multicols*}
+\end{document}
